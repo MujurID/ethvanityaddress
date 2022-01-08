@@ -24,6 +24,5 @@ while(!vanityAddressFoundA){
     if(regA.test(address) && !vanityAddressFoundA){
         vanityAddressFoundA = true;
         console.log(`\nAddress: ${address}\nMnemonic: ${mnemonic}`);
-        }
     }
 }
