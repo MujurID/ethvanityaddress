@@ -1,5 +1,5 @@
-const bip39 = require('bip39');
-const hdWallet = require('ethereumjs-wallet/hdkey')
+const bip39 = require('bip39'); //npm i bip39
+const hdWallet = require('ethereumjs-wallet/hdkey') //npm i ethereumjs-wallet
 
 var vanityAddressFoundA = false;
 
