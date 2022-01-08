@@ -20,7 +20,7 @@ while(!vanityAddressFoundA){
     node = HdKey.derivePath("m/44'/60'/0'/0/0");
     address = node.getWallet().getChecksumAddressString();
     
-    console.log(`\nAddress: ${address});
+    console.log(`\nAddress: ${address}`);
     if(regA.test(address) && !vanityAddressFoundA){
         vanityAddressFoundA = true;
         console.log(`\nAddress: ${address}\nMnemonic: ${mnemonic}`);
