@@ -4,7 +4,16 @@ const hdWallet = require('ethereumjs-wallet/hdkey') //npm i ethereumjs-wallet@0.
 var vanityAddressFoundA = false;
 
 //const regA = /0xDEPAN.*BELAKANG$/;
-const regA = /0xdead0.*$/;
+//const regA = /0xdead0.*$/;
+
+const add_awal = 'dead';
+const add_akhir = '';
+
+const regA0 = '0x'+`${add_awal}`+'.*'+`${add_akhir}`+'$';
+
+const regA = new RegExp(regA0);
+
+console.log(`${regA}`);
 
 var mnemonic;
 var seed;
@@ -25,7 +34,8 @@ while(!vanityAddressFoundA){
 	//privatekey = node.privateExtendedKey();
     
     //console.log(`\nAddress: ${address}`);
-    if(regA.test(address) && !vanityAddressFoundA){
+    //if(regA.test(address.toLowerCase()) && !vanityAddressFoundA){
+	if(regA.test(address.toLowerCase()) && !vanityAddressFoundA){
         vanityAddressFoundA = true;
         console.log(`\nAddress: ${address}\nMnemonic: ${mnemonic}`);
     }
