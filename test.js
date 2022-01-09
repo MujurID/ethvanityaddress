@@ -1,5 +1,15 @@
 const bip39 = require('bip39'); //npm i bip39@3.0.4
 const hdWallet = require('ethereumjs-wallet/hdkey') //npm i ethereumjs-wallet@0.6.5
+//buat multicpu/thread jalan
+//npm install pm2 -g
+//pm2 start api.js -i <processes> [max -1cpu]
+//$ pm2 list
+//$ pm2 monit
+//$ pm2 logs
+//$ pm2 stop     <app_name|namespace|id|'all'|json_conf>
+//$ pm2 restart  <app_name|namespace|id|'all'|json_conf>
+//$ pm2 delete   <app_name|namespace|id|'all'|json_conf>
+
 
 var vanityAddressFoundA = false;
 
