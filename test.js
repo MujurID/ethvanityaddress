@@ -6,7 +6,7 @@ var vanityAddressFoundA = false;
 //const regA = /0xDEPAN.*BELAKANG$/;
 //const regA = /0xdead0.*$/;
 
-const add_awal = 'dead';
+const add_awal = 'dead0';
 const add_akhir = '';
 
 const regA0 = '0x' + `${add_awal}` + '.*' + `${add_akhir}` + '$';
