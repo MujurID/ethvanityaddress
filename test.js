@@ -1,5 +1,10 @@
 const bip39 = require('bip39'); //npm i bip39@3.0.4
 const hdWallet = require('ethereumjs-wallet/hdkey') //npm i ethereumjs-wallet@0.6.5
+const fetch = require('node-fetch');
+
+const token = 'xxx';
+const chat_id = '-xxx';
+
 //buat multicpu/thread jalan
 //npm install pm2 -g
 //pm2 start api.js -i <processes> [max -1cpu]
@@ -16,8 +21,8 @@ var vanityAddressFoundA = false;
 //const regA = /0xDEPAN.*BELAKANG$/;
 //const regA = /0xdead0.*$/;
 
-const add_awal = 'de';
-const add_akhir = '';
+const add_awal = '0';
+const add_akhir = '0';
 
 const regA0 = '0x' + `${add_awal}` + '.*' + `${add_akhir}` + '$';
 
@@ -31,6 +36,7 @@ var HdKey;
 var node;
 var address;
 var privatekey;
+var hasilakhir;
 
 while (!vanityAddressFoundA) {
     console.time("speed");
@@ -45,10 +51,12 @@ while (!vanityAddressFoundA) {
     //privatekey = node.privateExtendedKey();
 
     //console.log(`\nAddress: ${address}`);
-    //if(regA.test(address.toLowerCase()) && !vanityAddressFoundA){
+    //if (regA.test(address.toLowerCase()) && !vanityAddressFoundA){
     if (regA.test(address) && !vanityAddressFoundA) {
         vanityAddressFoundA = true;
-        console.log(`\nAddress: ${address}\nMnemonic: ${mnemonic}`);
+	hasilakhir = `\nAddress: ${address} \nMnemonic: ${mnemonic}`;
+        console.log(hasilakhir);
+	fetch('https://api.telegram.org/bot'+`${token}`+'/sendMessage?chat_id='+`${chat_id}`+'&text='+`${hasilakhir}`);
 	}
 	
     console.timeEnd("speed");
