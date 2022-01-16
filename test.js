@@ -1,6 +1,6 @@
 const bip39 = require('bip39'); //npm i bip39@3.0.4
 const hdWallet = require('ethereumjs-wallet/hdkey') //npm i ethereumjs-wallet@0.6.5
-const fetch = require('node-fetch');
+const fetch = require('node-fetch'); //npm i node-fetch@2.6.6
 
 const token = 'xxx';
 const chat_id = '-xxx';
