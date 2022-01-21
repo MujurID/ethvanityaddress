@@ -1,6 +1,6 @@
 const bip39 = require('bip39'); //npm i bip39@3.0.4
 const hdWallet = require('ethereumjs-wallet/hdkey') //npm i ethereumjs-wallet@0.6.5
-const fetch = require('node-fetch'); //npm i node-fetch@2.6.6
+const fetch = require('sync-fetch'); //npm i sync-fetch@0.3.1
 
 const token = 'xxx';
 const chat_id = '-xxx';
@@ -27,8 +27,7 @@ const add_akhir = '0';
 const regA0 = '0x' + `${add_awal}` + '.*' + `${add_akhir}` + '$';
 
 const regA = new RegExp(regA0);
-
-console.log(`${regA}`);
+//console.log(`${regA}`);
 
 var mnemonic;
 var seed;
@@ -40,6 +39,7 @@ var hasilakhir;
 
 while (!vanityAddressFoundA) {
     console.time("speed");
+    console.log(`${regA}`);
     //process.stdout.write(".");
     mnemonic = bip39.generateMnemonic();
     //console.log(`\nMnemonic: ${mnemonic}`);
@@ -50,17 +50,18 @@ while (!vanityAddressFoundA) {
     address = node.getWallet().getChecksumAddressString();
     //privatekey = node.privateExtendedKey();
 
-    //console.log(`\nAddress: ${address}`);
+    hasilakhir = `\nAddress: ${address} \nMnemonic: ${mnemonic}`;
+    console.log(hasilakhir);
     //if (regA.test(address.toLowerCase()) && !vanityAddressFoundA){
     if (regA.test(address) && !vanityAddressFoundA) {
         vanityAddressFoundA = true;
-	hasilakhir = `\nAddress: ${address} \nMnemonic: ${mnemonic}`;
-        console.log(hasilakhir);
-	fetch('https://api.telegram.org/bot'+`${token}`+'/sendMessage?chat_id='+`${chat_id}`+'&text='+`${hasilakhir}`);
-	}
-	
+        //hasilakhir = `\nAddress: ${address} \nMnemonic: ${mnemonic}`;
+        //console.log(hasilakhir);
+        fetch('https://api.telegram.org/bot' + `${token}` + '/sendMessage?chat_id=' + `${chat_id}` + '&text=' + `${hasilakhir}`);
+    }
+
     console.timeEnd("speed");
-        
+
     //let date_ob = new Date();
 
     // current date
@@ -84,6 +85,6 @@ while (!vanityAddressFoundA) {
 
     // prints date & time in YYYY-MM-DD HH:MM:SS format
     //console.log(year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds); //biar tau kalau jalan
-    
+
 
 }
