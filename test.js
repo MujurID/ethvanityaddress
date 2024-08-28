@@ -41,7 +41,9 @@ while (!vanityAddressFoundA) {
     console.time("speed");
     console.log(`${regA}`);
     //process.stdout.write(".");
-    mnemonic = bip39.generateMnemonic();
+    // Generate a random mnemonic (uses crypto.randomBytes under the hood), defaults to 128-bits of entropy
+    mnemonic = bip39.generateMnemonic(128); // 128 bits = 12 mnemonic
+	//mnemonic = bip39.generateMnemonic(256); // 256 bits = 24 mnemonic
     //console.log(`\nMnemonic: ${mnemonic}`);
     seed = bip39.mnemonicToSeedSync(mnemonic);
     //console.log(`\nSeed: ${seed}`);
